@@ -58,7 +58,7 @@ const App = () => {
                 outline outline-2 ${
                     isEnabled ? 'outline-red-900' : 'outline-green-700'
                 }
-                focus-visible:outline-4 focus-visible:outline-zinc-800
+                focus-visible:outline-[3px] focus-visible:outline-zinc-800
                 hover:bg-zinc-200 hover:cursor-pointer
                 active:bg-zinc-300 active:text-zinc-950 active:outline-zinc-950`}
                 autoFocus
@@ -72,7 +72,7 @@ const App = () => {
                 outline outline-2 ${
                     isEnabled ? 'outline-red-900' : 'outline-green-700'
                 }
-                focus-visible:outline-4 focus-visible:outline-zinc-800
+                focus-visible:outline-[3px] focus-visible:outline-zinc-800
                 ${
                     isEnabled ? 'hover:bg-red-600' : 'hover:bg-green-700'
                 } hover:cursor-pointer
