@@ -1,29 +1,32 @@
 import { useEffect, useState } from 'react'
 import logo from './../src/images/logo.png'
+import { useFocusTrap } from './hooks/useFocusTrap'
 
 const App = () => {
-    const [enabled, setEnabled] = useState(true)
+    const [isEnabled, setIsEnabled] = useState(true)
+
+    useFocusTrap()
 
     useEffect(() => {
         if (typeof chrome !== 'undefined' && chrome.storage) {
             chrome.storage.sync.get(['rulesetEnabled'], (result) => {
-                setEnabled(result.rulesetEnabled)
+                setIsEnabled(result.rulesetEnabled)
             })
         }
     }, [])
 
     const toggleEnabled = () => {
-        const newEnabled = !enabled
-        setEnabled(newEnabled)
+        const newIsEnabled = !isEnabled
+        setIsEnabled(newIsEnabled)
         if (
             typeof chrome !== 'undefined' &&
             chrome.storage &&
             chrome.declarativeNetRequest
         ) {
-            chrome.storage.sync.set({ rulesetEnabled: newEnabled }, () => {
+            chrome.storage.sync.set({ rulesetEnabled: newIsEnabled }, () => {
                 chrome.declarativeNetRequest.updateEnabledRulesets({
-                    enableRulesetIds: newEnabled ? ['ruleset_1'] : [],
-                    disableRulesetIds: newEnabled ? [] : ['ruleset_1'],
+                    enableRulesetIds: newIsEnabled ? ['ruleset_1'] : [],
+                    disableRulesetIds: newIsEnabled ? [] : ['ruleset_1'],
                 })
             })
         }
@@ -42,35 +45,41 @@ const App = () => {
     return (
         <main
             className={`p-8 min-w-96 ${
-                enabled ? 'bg-red-600' : 'bg-green-700'
+                isEnabled ? 'bg-red-700' : 'bg-green-800'
             } text-zinc-50 flex flex-col gap-4 font-sans`}
         >
-            <div className="flex flex-row gap-4 m-auto font-semibold">
-                <h1 className="text-2xl">Ad Blocker</h1>
-                <img src={logo} alt="Ad Blocker" className="w-8" />
+            <div className="flex flex-row gap-4 m-auto items-center font-semibold">
+                <h1 className="text-3xl">Ad Blocker</h1>
+                <img src={logo} alt="Ad Blocker" className="w-8 h-8" />
             </div>
             <button
                 onClick={toggleEnabled}
-                className="bg-zinc-50 text-zinc-800 rounded-md w-1/2 m-auto
-                focus:outline focus:outline-2 focus:outline-zinc-800
+                className={`bg-zinc-50 text-zinc-800 font-medium rounded-md w-1/2 m-auto py-1
+                outline outline-2 ${
+                    isEnabled ? 'outline-red-900' : 'outline-green-700'
+                }
+                focus-visible:outline-4 focus-visible:outline-zinc-800
                 hover:bg-zinc-200 hover:cursor-pointer
-                active:bg-zinc-300 active:text-zinc-950 active:outline-zinc-950"
+                active:bg-zinc-300 active:text-zinc-950 active:outline-zinc-950`}
                 autoFocus
-            >{`Turn ${enabled ? 'OFF' : 'ON'}`}</button>
-            {enabled ? (
-                <p className="m-auto">You are currently ad-free.</p>
-            ) : (
-                <p className="m-auto">You are currently allowing ads.</p>
-            )}
+            >{`Turn ${isEnabled ? 'OFF' : 'ON'}`}</button>
+            <p className="m-auto">{`You are currently ${
+                isEnabled ? 'ad-free' : 'allowing ads'
+            }.`}</p>
             <button
                 onClick={reloadPage}
-                className={`text-zinc-50 rounded-md w-1/2 m-auto outline outline-2 outline-zinc-50
-                focus:outline-zinc-800
+                className={`text-zinc-50 rounded-md w-1/2 m-auto py-1
+                outline outline-2 ${
+                    isEnabled ? 'outline-red-900' : 'outline-green-700'
+                }
+                focus-visible:outline-4 focus-visible:outline-zinc-800
                 ${
-                    enabled ? 'hover:bg-red-500' : 'hover:bg-green-600'
+                    isEnabled ? 'hover:bg-red-600' : 'hover:bg-green-700'
                 } hover:cursor-pointer
                 ${
-                    enabled ? 'active:bg-red-400' : 'active:bg-green-500'
+                    isEnabled
+                        ? 'active:bg-red-500/20'
+                        : 'active:bg-green-600/30'
                 } active:outline-zinc-950`}
             >
                 Reload Page
