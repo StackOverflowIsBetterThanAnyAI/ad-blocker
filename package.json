@@ -16,7 +16,6 @@
     },
     "prettier": "prettier-es5",
     "scripts": {
-        "start": "react-scripts start",
         "build": "react-scripts build"
     },
     "eslintConfig": {
