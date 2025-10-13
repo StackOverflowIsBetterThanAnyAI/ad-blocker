@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "dependencies": {
-        "@types/chrome": "^0.0.268",
+        "@types/chrome": "^0.1.24",
         "@types/node": "^16.18.98",
         "@types/react": "^18.3.3",
         "@types/react-dom": "^18.3.0",
