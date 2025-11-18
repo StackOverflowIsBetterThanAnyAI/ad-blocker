@@ -54,7 +54,7 @@ const App = () => {
             </div>
             <button
                 onClick={toggleEnabled}
-                className={`bg-zinc-50 text-zinc-800 font-medium rounded-md w-1/2 m-auto py-1
+                className={`bg-zinc-50 text-zinc-800 font-medium text-base rounded-md w-1/2 m-auto py-1
                 outline outline-2 ${
                     isEnabled ? 'outline-red-900' : 'outline-green-700'
                 }
@@ -63,12 +63,12 @@ const App = () => {
                 active:bg-zinc-300 active:text-zinc-950 active:outline-zinc-950`}
                 autoFocus
             >{`Turn ${isEnabled ? 'OFF' : 'ON'}`}</button>
-            <p className="m-auto">{`You are currently ${
+            <p className="m-auto text-base">{`You are currently ${
                 isEnabled ? 'ad-free' : 'allowing ads'
             }.`}</p>
             <button
                 onClick={reloadPage}
-                className={`text-zinc-50 rounded-md w-1/2 m-auto py-1
+                className={`text-zinc-50 text-base rounded-md w-1/2 m-auto py-1
                 outline outline-2 ${
                     isEnabled ? 'outline-red-900' : 'outline-green-700'
                 }
