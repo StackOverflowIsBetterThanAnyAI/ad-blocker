@@ -69,7 +69,7 @@ const App = () => {
                 active:bg-zinc-300 active:text-zinc-950 active:outline-zinc-950`}
                 autoFocus
             >{`Turn ${isEnabled ? 'OFF' : 'ON'}`}</button>
-            <p className="m-auto text-base">{`You are currently ${
+            <p className="m-auto text-sm">{`You are currently ${
                 isEnabled ? 'ad-free' : 'allowing ads'
             }.`}</p>
             <button
