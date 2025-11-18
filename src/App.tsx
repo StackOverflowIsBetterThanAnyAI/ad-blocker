@@ -20,6 +20,16 @@ const App = () => {
         }
     }, [])
 
+    const reloadPage = () => {
+        if (typeof chrome !== 'undefined' && chrome.tabs) {
+            chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+                if (tabs[0].id) {
+                    chrome.tabs.reload(tabs[0].id)
+                }
+            })
+        }
+    }
+
     const toggleEnabled = () => {
         const newIsEnabled = !isEnabled
         setIsEnabled(newIsEnabled)
@@ -35,16 +45,7 @@ const App = () => {
                 })
             })
         }
-    }
-
-    const reloadPage = () => {
-        if (typeof chrome !== 'undefined' && chrome.tabs) {
-            chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-                if (tabs[0].id) {
-                    chrome.tabs.reload(tabs[0].id)
-                }
-            })
-        }
+        reloadPage()
     }
 
     return (
