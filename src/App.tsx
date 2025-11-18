@@ -3,14 +3,19 @@ import logo from './../src/images/logo.png'
 import { useFocusTrap } from './hooks/useFocusTrap'
 
 const App = () => {
-    const [isEnabled, setIsEnabled] = useState(true)
+    const [isEnabled, setIsEnabled] = useState<boolean>(true)
 
     useFocusTrap()
 
     useEffect(() => {
         if (typeof chrome !== 'undefined' && chrome.storage) {
             chrome.storage.sync.get(['rulesetEnabled'], (result) => {
-                setIsEnabled(result.rulesetEnabled)
+                const storedValue =
+                    result &&
+                    typeof (result as any).rulesetEnabled === 'boolean'
+                        ? (result as any).rulesetEnabled
+                        : true
+                setIsEnabled(storedValue)
             })
         }
     }, [])
