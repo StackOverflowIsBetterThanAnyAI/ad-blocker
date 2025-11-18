@@ -36,5 +36,11 @@
     },
     "devDependencies": {
         "tailwindcss": "^3.4.18"
+    },
+    "overrides": {
+        "glob": ">=11.1.0",
+        "nth-check": ">=2.0.1",
+        "postcss": ">=8.4.31",
+        "webpack-dev-server": ">=5.2.1"
     }
 }
