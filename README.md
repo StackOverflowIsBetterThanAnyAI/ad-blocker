@@ -22,7 +22,7 @@
 
 -   [Go to the latest release.](https://github.com/StackOverflowIsBetterThanAnyAI/ad-blocker/releases)
 
--   Download the archive.
+-   Download the `build.rar` archive.
 
 -   Unzip it.
 
