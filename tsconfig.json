@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es2022",
         "lib": ["dom", "dom.iterable", "esnext"],
+        "types": ["vite/client", "chrome", "node"],
         "allowJs": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
         "strict": true,
         "forceConsistentCasingInFileNames": true,
         "noFallthroughCasesInSwitch": true,
@@ -16,5 +16,5 @@
         "noEmit": true,
         "jsx": "react-jsx"
     },
-    "include": ["src", "public/background.js"]
+    "include": ["src", "public/background.js", "vite.config.ts"]
 }
