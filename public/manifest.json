@@ -15,7 +15,7 @@
             "16": "icon16.png"
         }
     },
-    "permissions": ["declarativeNetRequest", "storage", "tabs"],
+    "permissions": ["declarativeNetRequest", "storage"],
     "background": {
         "service_worker": "background.js",
         "type": "module"
