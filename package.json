@@ -14,7 +14,7 @@
         "preview": "vite preview"
     },
     "devDependencies": {
-        "@tailwindcss/vite": "^4.3.3",
+        "@tailwindcss/vite": "^4.3.5",
         "@types/chrome": "^0.3.7",
         "@types/node": "^24.0.0",
         "@types/react": "^19.3.0",
